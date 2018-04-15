@@ -1,0 +1,53 @@
+<service name="BookInventoryService" scope="application">
+	<description>
+		RESTful postal code Web service that receives and responds XML 
+	</description>
+	<transports>
+		<transport>http</transport>
+	</transports>
+	<messageReceivers>
+		<messageReceiver mep="http://www.w3.org/2004/08/wsdl/in-only" class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+		<messageReceiver  mep="http://www.w3.org/2004/08/wsdl/in-out"  class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	</messageReceivers>
+	<parameter name="ServiceClass" locked="false">au.edu.swin.waa.BookInventoryService</parameter>
+	<parameter name="disableSOAP11">true</parameter>
+	<parameter name="disableSOAP12">true</parameter>
+	
+	<operation name="addBook">
+		<parameter name="RESTMethod">POST</parameter>
+		<parameter name="RESTLocation">book/{bookId}</parameter>
+	</operation>
+	
+	<operation name="updateBook">
+		<parameter name="RESTMethod">PUT</parameter>
+		<parameter name="RESTLocation">book/{bookId}</parameter>
+	</operation>
+	
+	<operation name="createBookBorrow">
+		<parameter name="RESTMethod">POST</parameter>
+		<parameter name="RESTLocation">book/student/{studentId}</parameter>
+	</operation>
+	
+	
+	<operation name="getBookByISBN">
+		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTLocation">book/{isbn}</parameter>
+	</operation>
+	
+	<operation name="getAllBooks">
+		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTLocation">books</parameter>
+	</operation>
+
+	<operation name="getBookById">
+		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTLocation">book/{bookId}</parameter>
+	</operation>
+
+	<operation name="getBookByStudent">
+		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTLocation">book/student/{studentId}</parameter>
+	</operation>
+	
+
+</service>
