@@ -191,9 +191,10 @@ public class DatabaseConnection
 	 
 	 private ArrayList<Book> demoWriteResultSetForAllBooks(ResultSet resultSet) throws SQLException 
 	 {
-	        Book book = new Book();
 	        ArrayList<Book> books = new ArrayList<Book>();
 		 	while (resultSet.next()) {
+		 		Book book = new Book();
+		        
 	            String bookId = resultSet.getInt("book_id")+"";
 	            String bookTitle = resultSet.getString("book_title");
 	            String bookAuthorsList  = resultSet.getString("author");
@@ -233,9 +234,10 @@ public class DatabaseConnection
 	 
 	 private ArrayList<BorrowBook> demoWriteResultSetForBorrow(ResultSet resultSet) throws SQLException 
 	 {
-	        BorrowBook borrow = new BorrowBook();
 	        ArrayList<BorrowBook> borrows = new ArrayList<BorrowBook>();
 		 	while (resultSet.next()) {
+		 		BorrowBook borrow = new BorrowBook();
+		        
 	            String bookId = resultSet.getInt("book_id")+"";
 	            String bookStatus = resultSet.getString("book_status");
 	            String borrowDateTime = resultSet.getString("date_time");
@@ -245,6 +247,7 @@ public class DatabaseConnection
 	            borrow.setBookStatus(bookStatus);
 	            borrow.setBorrowDateTime(borrowDateTime);
 	            borrows.add(borrow);
+	            
 	            
 	            /*Date date = resultSet.getDate("datum");
 	            String comment = resultSet.getString("comments");*/

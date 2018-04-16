@@ -108,7 +108,7 @@ public class BookInventoryService{
 	{
 		
 		ArrayList<BorrowBook> borrowBooks = new ArrayList<BorrowBook>();
-		String data = "<borrow>";
+		String data = "<BorrowBooks>";
 		dbConn.createConnection();
 		
 		borrowBooks = dbConn.getBookByStudent(studentId);
@@ -117,7 +117,7 @@ public class BookInventoryService{
 			data += borrowBooks.get(loop).toString();
 		}
 		dbConn.closeConenction();
-		return data+"</borrow>";
+		return data+"</BorrowBooks>";
 	}
 	
 	public String getAllBooks() throws SQLException 
@@ -125,28 +125,28 @@ public class BookInventoryService{
 		dbConn.createConnection();
 		
 		ArrayList<Book> books = new ArrayList<Book>();
-		String data = "<books>";
+		String data = "<Books>";
 		books = dbConn.getAllBooks();
 		for(int loop=0; loop<books.size(); loop++)
 		{
 			data += books.get(loop).toString();
 		}
 		dbConn.closeConenction();
-		return data+"</books>";
+		return data+"</Books>";
 	}
 	
 	public static void main(String args[]) throws SQLException
 	{
-		String data="&lt;books&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;/books&gt;";
+	//	String data="&lt;books&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;/books&gt;";
 		//System.out.println(StringEscapeUtils.unescapeHtml4(data));
-		//BookInventoryService bis = new BookInventoryService();
+		BookInventoryService bis = new BookInventoryService();
 		//System.out.println(bis.addBook("a","a", "a", "a", "a", "a", "a"));
 		//System.out.println(bis.updateBook("1", "b"));
 		//System.out.println(bis.createBorrow("1","2", "c"));
 		//System.out.println(bis.getBookById("1"));
 		//System.out.println(bis.getBookByISBN("a"));
 		//System.out.println(bis.getBookByStudent("1"));
-		//System.out.println(bis.getAllBooks());
+		System.out.println(bis.getAllBooks());
 		
 	}
 	

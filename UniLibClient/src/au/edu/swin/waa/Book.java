@@ -1,41 +1,22 @@
 package au.edu.swin.waa;
-
+import javax.xml.bind.annotation.XmlElement;
 
 public class Book {
 	private String id;
 	private String title;
-	private String authorList;
+	private String authorsList;
 	private String isbn10;
 	private String isbn13;
 	private String publisher;
 	private String publishedDate;
 	private String status;
 	
-	public Book(String id, String title, String authorList,
+	public Book(String id, String title, String authorsList,
 			String isbn10, String isbn13, String publisher,
-			String publishedDate, String status) throws BookException {
+			String publishedDate, String status) {
+		
 		super();
-		if(!id.trim().equals("") && !title.trim().equals("") && !authorList.equals("") 
-				&& !isbn10.equals("") && !isbn13.equals("") && !publisher.equals("")
-				&& !publishedDate.equals("") && !status.equals("")){
-			this.id = id;
-			this.title = title;
-			this.authorList = authorList;
-			this.isbn10 = isbn10;
-			this.isbn13 = isbn13;
-			this.publisher = publisher;
-			this.publishedDate = publishedDate;
-			if(status.toLowerCase().equals("available") || 
-					status.toLowerCase().equals("borrowed") || 
-					status.toLowerCase().equals("backorder")){
-						this.status = status.toLowerCase(); 
-			}else{
-				throw new BookException("Status can either be available, Borrowed or Backorder");
-			}
-		}else
-		{
-			throw new BookException("Fields Can't be blank! Enter valid details");
-		}		
+		
 	}
 	
 
@@ -43,7 +24,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-
+	@XmlElement
 	public String getStatus() {
 		return status;
 	}
@@ -51,7 +32,7 @@ public class Book {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	@XmlElement
 	public String getId() {
 		return id;
 	}
@@ -59,7 +40,7 @@ public class Book {
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@XmlElement
 	public String getTitle() {
 		return title;
 	}
@@ -67,15 +48,15 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public String getAuthorList() {		
-		return authorList;
+	@XmlElement
+	public String getauthorsList() {		
+		return authorsList;
 	}
 
-	public void setAuthorList(String authorList) {
-		this.authorList = authorList;
+	public void setauthorsList(String authorsList) {
+		this.authorsList = authorsList;
 	}
-
+	@XmlElement
 	public String getIsbn10() {
 		return isbn10;
 	}
@@ -83,7 +64,7 @@ public class Book {
 	public void setIsbn10(String isbn10) {
 		this.isbn10 = isbn10;
 	}
-
+	@XmlElement
 	public String getIsbn13() {
 		return isbn13;
 	}
@@ -91,7 +72,7 @@ public class Book {
 	public void setIsbn13(String isbn13) {
 		this.isbn13 = isbn13;
 	}
-
+	@XmlElement
 	public String getPublisher() {
 		return publisher;
 	}
@@ -99,7 +80,7 @@ public class Book {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
-
+	@XmlElement
 	public String getPublishedDate() {
 		return publishedDate;
 	}
@@ -110,11 +91,17 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", authorList="
-				+ authorList + ", isbn10=" + isbn10 + ", isbn13="
-				+ isbn13 + ", publisher=" + publisher + ", publishedDate="
-				+ publishedDate + "]";
-	};
+		return "<book>"
+	+"<id>"+id+"</id>"
+	+"<title>"+title+"</title>"
+	+"<authorsList>"+authorsList+"</authorsList>"
+	+"<isbn10>"+isbn10+"</isbn10>"
+	+"<isbn13>"+isbn13+"</isbn13>"
+	+"<publisher>"+publisher+"</publisher>"
+	+"<publishedDate>"+publishedDate+"</publishedDate>"
+	+"<status>"+status+"</status>"
+	+"</book>";
+	}
 	
 	
 	

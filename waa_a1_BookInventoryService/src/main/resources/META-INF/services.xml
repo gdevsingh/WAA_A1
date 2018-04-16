@@ -15,38 +15,38 @@
 	
 	<operation name="addBook">
 		<parameter name="RESTMethod">POST</parameter>
-		<parameter name="RESTLocation">book/{bookId}</parameter>
+		<parameter name="RESTLocation">book</parameter>
 	</operation>
 	
 	<operation name="updateBook">
-		<parameter name="RESTMethod">PUT</parameter>
-		<parameter name="RESTLocation">book/{bookId}</parameter>
+		<parameter name="RESTMethod">POST</parameter>
+		<parameter name="RESTLocation">book/update</parameter>
 	</operation>
 	
 	<operation name="createBookBorrow">
 		<parameter name="RESTMethod">POST</parameter>
-		<parameter name="RESTLocation">book/student/{studentId}</parameter>
+		<parameter name="RESTLocation">book/student/</parameter>
 	</operation>
 	
 	
 	<operation name="getBookByISBN">
-		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTMethod">POST</parameter>
 		<parameter name="RESTLocation">book/{isbn}</parameter>
 	</operation>
 	
 	<operation name="getAllBooks">
-		<parameter name="RESTMethod">GET</parameter>
+		<parameter name="RESTMethod">POST</parameter>
 		<parameter name="RESTLocation">books</parameter>
 	</operation>
 
 	<operation name="getBookById">
-		<parameter name="RESTMethod">GET</parameter>
-		<parameter name="RESTLocation">book/{bookId}</parameter>
+		<parameter name="RESTMethod">POST</parameter>
+		<parameter name="RESTLocation">books/{bookId}</parameter>
 	</operation>
 
 	<operation name="getBookByStudent">
-		<parameter name="RESTMethod">GET</parameter>
-		<parameter name="RESTLocation">book/student/{studentId}</parameter>
+		<parameter name="RESTMethod">POST</parameter>
+		<parameter name="RESTLocation">books/student</parameter>
 	</operation>
 	
 
