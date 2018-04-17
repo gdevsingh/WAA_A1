@@ -111,7 +111,7 @@ public class LibController {
 			return data;
 		}
 	}
-	public static void main(String args[]) throws Exception
+	/*public static void main(String args[]) throws Exception
 	{
 		LibController lc = new LibController();
 		System.out.println(lc.requestBook("123", "1234", "9780647508541"));
@@ -136,6 +136,6 @@ public class LibController {
 		//System.out.println(bis.getBookByISBN("5"));//check it out after deploying new bis
 		//System.out.println(bis.getBookByStudent("2"));
 		//System.out.println(bis.updateBook("1", "just updated"));
-	}
+	}*/
 	
 }
