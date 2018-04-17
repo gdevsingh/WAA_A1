@@ -27,7 +27,12 @@ public class LibController {
 	}
 	public static void main(String args[]) throws AxisFault, JAXBException
 	{
-		BookInventoryServiceREST bis = new BookInventoryServiceREST();
+		
+		StudentServiceSOAPClient ss = new StudentServiceSOAPClient();
+		//System.out.println(ss.addStudent("123aasdas45", "Gurdev SIngh", "1aas24"));
+		//System.out.println(ss.validateStudent("123", "1234"));
+		//BookInventoryServiceREST bis = new BookInventoryServiceREST();
+		
 		//System.out.println(bis.addBook("z", "z", "z", "z", "z", "z", "z"));
 		//System.out.println(bis.createBookBorrow("2", "3", "on loan"));
 		//System.out.println(bis.getAllBooks());

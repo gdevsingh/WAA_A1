@@ -3,38 +3,76 @@ package au.edu.swin.waa;
 import java.rmi.RemoteException;
 
 import org.apache.axis2.AxisFault;
+import org.apache.commons.lang.StringUtils;
 
 import au.edu.swin.waa.StudentServiceSOAPStub.AddStudent;
 import au.edu.swin.waa.StudentServiceSOAPStub.AddStudentResponse;
 import au.edu.swin.waa.StudentServiceSOAPStub.ValidateStudent;
 import au.edu.swin.waa.StudentServiceSOAPStub.ValidateStudentResponse;
+
 public class StudentServiceSOAPClient {
- public static void main(String[] args) {
- try {
- StudentServiceSOAPStub stub = new StudentServiceSOAPStub();
- // Add a suburb
-AddStudent addStudent = new AddStudent();
-addStudent.setStudentId(123);
-addStudent.setString("Kartik Chadha");
-addStudent.setPin(1234);
-AddStudentResponse addStudentResponse = stub.addStudent(addStudent);
+	public String addStudent(String aStudentId, String aName, String aPin) {
+		int student, pin = 0;
+		if (StringUtils.isNumeric(aStudentId) && StringUtils.isNumeric(aPin)) {
+			student = Integer.parseInt(aStudentId);
+			pin = Integer.parseInt(aPin);
+		} else {
+			return ("Make sure your pin and student id is numeric.");
+		}
+		if (pin > 9999 || pin < 1000) {
+			return ("Your pin should be a 4-digit number.");
+		}
+		try {
+			StudentServiceSOAPStub stub = new StudentServiceSOAPStub();
 
-ValidateStudent student = new ValidateStudent();
-student.setStudentId(123);
-student.setPin(1234);
-ValidateStudentResponse validateStudentResponse = stub.validateStudent(student);
+			AddStudent addStudent = new AddStudent();
+			addStudent.setStudentId(student);
+			addStudent.setString(aName);
+			addStudent.setPin(pin);
+			AddStudentResponse addStudentResponse = stub.addStudent(addStudent);
 
+			return (addStudentResponse.get_return());
 
-//System.out.println(addStudentResponse.get_return());
-System.out.println(validateStudentResponse.get_return());
+		} catch (AxisFault e) {
+			return e.getMessage();
+		} catch (RemoteException e) {
+			return e.getMessage();
+		} catch (StudentServiceSOAPSQLExceptionException e) {
+			// TODO Auto-generated catch block
+			return e.getMessage();
+		}
+	}
 
- } catch (AxisFault e) {
- e.printStackTrace();
- } catch (RemoteException e) {
- e.printStackTrace();
- } catch (StudentServiceSOAPSQLExceptionException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
- }
+	public String validateStudent(String aStudentId, String aPin) {
+
+		int student, pin = 0;
+		if (StringUtils.isNumeric(aStudentId) && StringUtils.isNumeric(aPin)) {
+			student = Integer.parseInt(aStudentId);
+			pin = Integer.parseInt(aPin);
+		} else {
+			return ("Make sure your pin and student id is numeric.");
+		}
+		if (pin > 9999 || pin < 1000) {
+			return ("Your pin should be a 4-digit number.");
+		}
+
+		try {
+			StudentServiceSOAPStub stub = new StudentServiceSOAPStub();
+
+			ValidateStudent vs = new ValidateStudent();
+			vs.setStudentId(student);
+			vs.setPin(pin);
+			ValidateStudentResponse validateStudentResponse = stub
+					.validateStudent(vs);
+
+			return (validateStudentResponse.get_return());
+
+		} catch (AxisFault e) {
+			return e.getMessage();
+		} catch (RemoteException e) {
+			return e.getMessage();
+		} catch (StudentServiceSOAPSQLExceptionException e) {
+			return e.getMessage();
+		}
+	}
 }
