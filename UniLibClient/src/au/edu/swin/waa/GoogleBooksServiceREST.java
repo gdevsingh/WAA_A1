@@ -19,31 +19,31 @@ public class GoogleBooksServiceREST {
 				{
 					if(Double.parseDouble(gbDetails.get("ratingBook").toString())>=3.5)
 					{
-						gbDetails.put("status","NOT_NULL");
+						gbDetails.put("status_g","NOT_NULL");
 						return gbDetails;
 					}
 					else
 					{
-						gbDetails.put("status","Rating is less than 3.5");
+						gbDetails.put("status_g","We can't order it, Rating is less than 3.5 :(");
 						return gbDetails;
 					}
 				}
 				else
 				{
-					gbDetails.put("status","Not for Sale");
+					gbDetails.put("status_g","This book is Not for Sale");
 					return gbDetails;
 				}
 			}
 			else
 			{
-				gbDetails.put("status","Not available in Australia");
+				gbDetails.put("status_g","This book is Not available in Australia");
 				return gbDetails;
 			}
 		}
 		else
 		{
 			gbDetails = new HashMap<String, String>();
-			gbDetails.put("status","No such book exists");
+			gbDetails.put("status_g","No such Book exists in the market!");
 			return gbDetails;
 		}
 		

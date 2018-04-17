@@ -65,6 +65,12 @@ public class BookInventoryServiceREST{
 		OMElement response = sender.sendReceive(createRequestPayloadGetBookByISBN(aISBN));
 		return processResponsePayloadBook(response);
 	}
+	public String getSingleBookIdByISBN(String aISBN) throws AxisFault, JAXBException
+	{
+		ServiceClient sender = createSender();
+		OMElement response = sender.sendReceive(createRequestPayloadGetBookByISBN(aISBN));
+		return processResponsePayloadBook(response);
+	}
 	
 	public String getBookById(String aBookId) throws AxisFault, JAXBException
 	{
@@ -252,14 +258,43 @@ public class BookInventoryServiceREST{
 				break;
 			}
 			dataToSend += ("ID : "+e.getId())+"\n"+
-			"Ttitle: "+e.getTitle()+"\n"+
+			"Title: "+e.getTitle()+"\n"+
 			"Author(s) : "+e.getauthorsList()+"\n"+
 			"ISBN10 : "+e.getIsbn10()+"\n"+
 			"ISBN13 : "+e.getIsbn13()+"\n"+
 			"Publisher : "+e.getPublisher()+"\n"+
 			"Pub Date : "+e.getPublishedDate()+"\n"+
-			"Status : "+e.getStatus()+"\n"+
+			"Status : "+e.getStatus()+" \n"+
 			"--------------------------"+"\n";
+	    }
+		return ((dataToSend == "") ? "no data" : dataToSend);
+	}
+	
+	private static String processResponsePayloadSingleBook(OMElement response) throws JAXBException {
+		Iterator iterator = response.getChildrenWithLocalName("return");
+		OMElement returnElement = (OMElement)iterator.next();
+		System.out.println(returnElement.getText());
+		
+		
+		String xml = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"+returnElement.getText();
+        StringReader reader = new StringReader(xml);
+       
+		JAXBContext context = JAXBContext.newInstance(Books.class);
+		Unmarshaller un = context.createUnmarshaller();
+		//convert to desired object
+		Books bookData = (Books)un.unmarshal(reader);
+		List<Book> books =  bookData.getBook();
+		
+	        //iterate over object
+		String dataToSend = "";
+		for(Book e: books){
+			
+			if(e.getId().equals("null"))
+			{
+				dataToSend = "No such Book exists!";
+				break;
+			}
+			dataToSend = e.getId();
 	    }
 		return ((dataToSend == "") ? "no data" : dataToSend);
 	}
