@@ -1,25 +1,26 @@
 package au.edu.swin.waa;
 
-import java.util.HashMap;
+	import java.util.HashMap;
 
 public class TestGoogleBooks {
 
 	public static void main(String args[]) throws Exception
 	{
-		HashMap<String, String> bookDetails = new HashMap<String, String>();
+		HashMap<String, String> gbDetails = new HashMap<String, String>();
 				
 		GoogleBooksClient gbc=new GoogleBooksClient();
 		{
 			
-			bookDetails=gbc.getGBookDetails("isbn:0606030085");
+			gbDetails=gbc.getGBookDetails("isbn:0522845231");
+			//gbDetails.put("status", value)
 		
-			if(bookDetails!=null)
+			if(gbDetails!=null)
 			{					
-				if(bookDetails.get("saleCountry").toString().equals("AU"))
+				if(gbDetails.get("isForSaleBook").toString().equals("AU"))
 				{								
-					if(bookDetails.get("saleability").equals("FOR_SALE"))
+					if(gbDetails.get("saleabilityBook").equals("FOR_SALE"))
 					{
-						if(Double.parseDouble(bookDetails.get("rating").toString())>3.5)
+						if(Double.parseDouble(gbDetails.get("ratingBook").toString())>3.5)
 						{
 //							finalString=myController.getResponseAddBook(epr_addBook, bookDetails);
 //							if(!finalString.contains("ERROR"))

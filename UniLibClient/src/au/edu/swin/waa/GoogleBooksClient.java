@@ -1,5 +1,6 @@
 package au.edu.swin.waa;
 import java.util.HashMap;
+
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.services.books.Books.Volumes.List;
 import com.google.api.services.books.model.Volume;
@@ -70,30 +71,29 @@ public class GoogleBooksClient
 		}
 
 		
-		hashMap.put("id", volume.getId());
-		hashMap.put("title", volumeInfo.getTitle());
-		hashMap.put("authors", authorsData);
-		hashMap.put("isbn10", volumeInfo.getIndustryIdentifiers().get(1).get("identifier").toString());
-		hashMap.put("isbn13", volumeInfo.getIndustryIdentifiers().get(0).get("identifier").toString());
-		hashMap.put("publisher", volumeInfo.getPublisher());
-		hashMap.put("publishedDate", volumeInfo.getPublishedDate());
-		hashMap.put("country", saleInfo.getCountry());
-		hashMap.put("isForSale", saleInfo.getSaleability());
-		hashMap.put("rating", rating.toString());
+		hashMap.put("idBook", volume.getId());
+		hashMap.put("titleBook", volumeInfo.getTitle());
+		hashMap.put("authorsBook", authorsData);
+		hashMap.put("isbn10Book", volumeInfo.getIndustryIdentifiers().get(1).get("identifier").toString());
+		hashMap.put("isbn13Book", volumeInfo.getIndustryIdentifiers().get(0).get("identifier").toString());
+		hashMap.put("publisherBook", volumeInfo.getPublisher());
+		hashMap.put("publishedDateBook", volumeInfo.getPublishedDate());
+		hashMap.put("countryBook", saleInfo.getCountry());
+		hashMap.put("isForSaleBook", saleInfo.getSaleability());
+		hashMap.put("ratingBook", rating.toString());
 
-		System.out.println("***********");
-		System.out.println(hashMap.get("id"));
-		System.out.println(hashMap.get("title"));
-		System.out.println(hashMap.get("authors"));
-		System.out.println(hashMap.get("isbn10"));
-		System.out.println(hashMap.get("isbn13"));
-		System.out.println(hashMap.get("publisher"));
-		System.out.println(hashMap.get("publishedDate"));
-		System.out.println(hashMap.get("country"));
-		System.out.println(hashMap.get("isForSale"));
-		System.out.println(hashMap.get("rating"));
-		System.out.println("***********");
-
+		System.out.println("============================================");
+	      System.out.println(hashMap.get("idBook"));
+	      System.out.println(hashMap.get("titleBook"));
+	      System.out.println(hashMap.get("authorsBook"));
+	      System.out.println(hashMap.get("isbn10Book"));
+	      System.out.println(hashMap.get("isbn13Book"));
+	      System.out.println(hashMap.get("publisherBook"));
+	      System.out.println(hashMap.get("publishedDateBook"));
+	      System.out.println(hashMap.get("countryBook"));
+	      System.out.println(hashMap.get("isForSaleBook"));
+	      System.out.println(hashMap.get("ratingBook"));
+	      System.out.println("============================================");
 		return hashMap;
 
 	}

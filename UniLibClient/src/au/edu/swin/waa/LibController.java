@@ -1,5 +1,7 @@
 package au.edu.swin.waa;
 
+import java.util.HashMap;
+
 import javax.xml.bind.JAXBException;
 
 import org.apache.axis2.AxisFault;
@@ -25,14 +27,18 @@ public class LibController {
 	{
 		return "";
 	}
-	public static void main(String args[]) throws AxisFault, JAXBException
+	public static void main(String args[]) throws Exception
 	{
+		//GoogleBooksServiceREST gbs = new GoogleBooksServiceREST();
+		//HashMap<String, String> hm = new HashMap<String, String>();
+		//hm = gbs.getGoogleBook("0522845231");
+		//System.out.println(hm.get("status"));
 		
-		StudentServiceSOAPClient ss = new StudentServiceSOAPClient();
+		//StudentServiceSOAPClient ss = new StudentServiceSOAPClient();
 		//System.out.println(ss.addStudent("123aasdas45", "Gurdev SIngh", "1aas24"));
 		//System.out.println(ss.validateStudent("123", "1234"));
-		//BookInventoryServiceREST bis = new BookInventoryServiceREST();
 		
+		//BookInventoryServiceREST bis = new BookInventoryServiceREST();
 		//System.out.println(bis.addBook("z", "z", "z", "z", "z", "z", "z"));
 		//System.out.println(bis.createBookBorrow("2", "3", "on loan"));
 		//System.out.println(bis.getAllBooks());
