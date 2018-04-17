@@ -69,7 +69,7 @@ public class BookInventoryServiceREST{
 	{
 		ServiceClient sender = createSender();
 		OMElement response = sender.sendReceive(createRequestPayloadGetBookByISBN(aISBN));
-		return processResponsePayloadBook(response);
+		return processResponsePayloadSingleBook(response);
 	}
 	
 	public String getBookById(String aBookId) throws AxisFault, JAXBException

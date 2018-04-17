@@ -76,8 +76,9 @@ public class LibController {
 					aStatus = STATUS_B;
 					
 					String output = "";
-					output += bis.addBook(aTitle, aAuthorList, aISBN10, aISBN13, aPublisher, aPublishedDate, aStatus) +"\n";
-					output += bis.createBookBorrow(aStudentId, bis.getSingleBookIdByISBN(aISBN13), aStatus) +"\n";
+					output = bis.addBook(aTitle, aAuthorList, aISBN10, aISBN13, aPublisher, aPublishedDate, aStatus) +"\n";
+					String aBookId=bis.getSingleBookIdByISBN(aISBN13);
+					output += bis.createBookBorrow(aStudentId, aBookId, aStatus) +"\n";
 					output += "Your book has been ordered!";
 					return output;
 					
