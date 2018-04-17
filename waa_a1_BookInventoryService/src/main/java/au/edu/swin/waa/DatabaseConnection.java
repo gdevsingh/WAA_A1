@@ -93,7 +93,9 @@ public class DatabaseConnection
 		 		+ " from books "
 		 		+ "where book_id ='"+id+"';");
          resultSet = preparedStatement.executeQuery();
+         
          Book bookReturn = demoWriteResultSet(resultSet);
+         
          return bookReturn;
     }
 	

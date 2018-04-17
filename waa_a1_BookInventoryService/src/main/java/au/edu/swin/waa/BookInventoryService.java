@@ -58,7 +58,7 @@ public class BookInventoryService{
 		if(dbConn.updateBookStatus(bookId, status)==0)
 		{
 			dbConn.closeConenction();
-			return "No book status updated !";
+			return "No such book exists, update failed !";
 		}
 		else
 		{
@@ -93,14 +93,14 @@ public class BookInventoryService{
 	public String getBookByISBN(String ISBN) throws SQLException 
 	{
 		dbConn.createConnection();
-		return dbConn.getBookByISBN(ISBN).toString();
+		return "<Books>"+dbConn.getBookByISBN(ISBN).toString()+"</Books>";
 	}
 	
 	// Retrieve a book by id
 	public String getBookById(String id) throws SQLException 
 	{
 		dbConn.createConnection();
-		return dbConn.getBookById(id).toString();
+		return "<Books>"+dbConn.getBookById(id).toString()+"</Books>";
 	}
 	
 		// Retrieve all books borrowed by student
@@ -112,9 +112,16 @@ public class BookInventoryService{
 		dbConn.createConnection();
 		
 		borrowBooks = dbConn.getBookByStudent(studentId);
-		for(int loop=0; loop<borrowBooks.size(); loop++)
+		if(borrowBooks.size()==0)
 		{
-			data += borrowBooks.get(loop).toString();
+			data += "<BorrowBook><bookId>null</bookId></BorrowBook>";
+		}
+		else
+		{
+			for(int loop=0; loop<borrowBooks.size(); loop++)
+			{
+				data += borrowBooks.get(loop).toString();
+			}
 		}
 		dbConn.closeConenction();
 		return data+"</BorrowBooks>";
@@ -135,7 +142,7 @@ public class BookInventoryService{
 		return data+"</Books>";
 	}
 	
-	public static void main(String args[]) throws SQLException
+	/*public static void main(String args[]) throws SQLException
 	{
 	//	String data="&lt;books&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;book&gt;&lt;id&gt;9&lt;/id&gt;&lt;title&gt;1&lt;/title&gt;&lt;authorsList&gt;1&lt;/authorsList&gt;&lt;isbn10&gt;1&lt;/isbn10&gt;&lt;isbn13&gt;2&lt;/isbn13&gt;&lt;publisher&gt;2&lt;/publisher&gt;&lt;publishedDate&gt;2&lt;/publishedDate&gt;&lt;status&gt;2&lt;/status&gt;&lt;/book&gt;&lt;/books&gt;";
 		//System.out.println(StringEscapeUtils.unescapeHtml4(data));
@@ -148,7 +155,7 @@ public class BookInventoryService{
 		//System.out.println(bis.getBookByStudent("1"));
 		System.out.println(bis.getAllBooks());
 		
-	}
+	}*/
 	
 	
 	
