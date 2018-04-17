@@ -82,7 +82,7 @@ public class GoogleBooksClient
 		hashMap.put("isForSaleBook", saleInfo.getSaleability());
 		hashMap.put("ratingBook", rating.toString());
 
-		System.out.println("============================================");
+	/*	System.out.println("============================================");
 	      System.out.println(hashMap.get("idBook"));
 	      System.out.println(hashMap.get("titleBook"));
 	      System.out.println(hashMap.get("authorsBook"));
@@ -94,6 +94,7 @@ public class GoogleBooksClient
 	      System.out.println(hashMap.get("isForSaleBook"));
 	      System.out.println(hashMap.get("ratingBook"));
 	      System.out.println("============================================");
+	      */
 		return hashMap;
 
 	}

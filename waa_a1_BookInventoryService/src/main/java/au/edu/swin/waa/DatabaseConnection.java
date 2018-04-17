@@ -24,11 +24,11 @@ public class DatabaseConnection
 		}
 		catch (ClassNotFoundException e) 
 		{
-			System.out.println("Where is your MySQL JDBC Driver?");
+			System.out.println("JDBC MISSING!");
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("MySQL JDBC Driver Registered!");
+		System.out.println("MySQLJDBCDriver Registered!");
 		connect = null;
 		
 		try 
@@ -44,7 +44,7 @@ public class DatabaseConnection
 		
 		if (connect != null) 
 		{
-			System.out.println("Connection to the DB Successful!");
+			System.out.println("Connection Successful!");
 		}
 		else
 		{
@@ -145,7 +145,6 @@ public class DatabaseConnection
 		preparedStatement.setString(1, borrowBook.getStudentId());
 		preparedStatement.setString(2, borrowBook.getBookId());
 		preparedStatement.setString(3, borrowBook.getBookStatus());
-		//preparedStatement.setString(4, borrowBook.getBorrowDateTime());
 		
 		//0 for 0 rows inserted n for n row(s)
 		return (preparedStatement.executeUpdate());
@@ -174,19 +173,7 @@ public class DatabaseConnection
 	            book.setStatus(bookStatus);
 	            book.setIsbn10(bookISBN10);
 	            book.setIsbn13(bookISBN13);
-	            
-	            /*Date date = resultSet.getDate("datum");
-	            String comment = resultSet.getString("comments");*/
-	            /*System.out.println("BookID: " + bookId);
-	            System.out.println("BookTitle: " + bookTitle);
-	            System.out.println("BookAuthorsLisr: " + bookAuthorsList);
-	            System.out.println("BookPublisher: " + bookPublisher);
-	            System.out.println("BookPublishDate: " + bookPublishDate);
-	            System.out.println("BookStatus: " + bookStatus);
-	            System.out.println("BookISBN10: " + bookISBN10);
-	            System.out.println("BookISBN13: " + bookISBN13);*/
-	            
-	               
+	       
 	        }
 		 	return book;
 	 }
@@ -218,17 +205,6 @@ public class DatabaseConnection
 	            
 	            books.add(book);
 	            
-	            /*Date date = resultSet.getDate("datum");
-	            String comment = resultSet.getString("comments");*/
-	            /*System.out.println("BookID: " + bookId);
-	            System.out.println("BookTitle: " + bookTitle);
-	            System.out.println("BookAuthorsLisr: " + bookAuthorsList);
-	            System.out.println("BookPublisher: " + bookPublisher);
-	            System.out.println("BookPublishDate: " + bookPublishDate);
-	            System.out.println("BookStatus: " + bookStatus);
-	            System.out.println("BookISBN10: " + bookISBN10);
-	            System.out.println("BookISBN13: " + bookISBN13);*/
-	            
 	               
 	        }
 		 	return books;
@@ -249,14 +225,7 @@ public class DatabaseConnection
 	            borrow.setBookStatus(bookStatus);
 	            borrow.setBorrowDateTime(borrowDateTime);
 	            borrows.add(borrow);
-	            
-	            
-	            /*Date date = resultSet.getDate("datum");
-	            String comment = resultSet.getString("comments");*/
-	            /*System.out.println("BookID: " + bookId);
-	            System.out.println("bookstatus: " + bookStatus);
-	            System.out.println("borrowdatetime: " + borrowDateTime);*/
-	            
+
 	               
 	        }
 		 	return borrows;
